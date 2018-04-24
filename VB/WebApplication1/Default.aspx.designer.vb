@@ -7,57 +7,54 @@
 ' </auto-generated>
 '------------------------------------------------------------------------------
 
-
-Imports Microsoft.VisualBasic
-Imports System
 Namespace WebApplication1
 
 
-	Partial Public Class _Default
+    Partial Public Class _Default
 
-		''' <summary>
-		''' Head1 control.
-		''' </summary>
-		''' <remarks>
-		''' Auto-generated field.
-		''' To modify move field declaration from designer file to code-behind file.
-		''' </remarks>
-		Protected Head1 As Global.System.Web.UI.HtmlControls.HtmlHead
+        ''' <summary>
+        ''' Head1 control.
+        ''' </summary>
+        ''' <remarks>
+        ''' Auto-generated field.
+        ''' To modify move field declaration from designer file to code-behind file.
+        ''' </remarks>
+        Protected Head1 As Global.System.Web.UI.HtmlControls.HtmlHead
 
-		''' <summary>
-		''' Form1 control.
-		''' </summary>
-		''' <remarks>
-		''' Auto-generated field.
-		''' To modify move field declaration from designer file to code-behind file.
-		''' </remarks>
-		Protected Form1 As Global.System.Web.UI.HtmlControls.HtmlForm
+        ''' <summary>
+        ''' Form1 control.
+        ''' </summary>
+        ''' <remarks>
+        ''' Auto-generated field.
+        ''' To modify move field declaration from designer file to code-behind file.
+        ''' </remarks>
+        Protected Form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
-		''' <summary>
-		''' AccessDataSource1 control.
-		''' </summary>
-		''' <remarks>
-		''' Auto-generated field.
-		''' To modify move field declaration from designer file to code-behind file.
-		''' </remarks>
-		Protected AccessDataSource1 As Global.System.Web.UI.WebControls.AccessDataSource
+        ''' <summary>
+        ''' AccessDataSource1 control.
+        ''' </summary>
+        ''' <remarks>
+        ''' Auto-generated field.
+        ''' To modify move field declaration from designer file to code-behind file.
+        ''' </remarks>
+        Protected AccessDataSource1 As Global.System.Web.UI.WebControls.AccessDataSource
 
-		''' <summary>
-		''' ASPxButton2 control.
-		''' </summary>
-		''' <remarks>
-		''' Auto-generated field.
-		''' To modify move field declaration from designer file to code-behind file.
-		''' </remarks>
-		Protected ASPxButton2 As Global.DevExpress.Web.ASPxEditors.ASPxButton
+        ''' <summary>
+        ''' ASPxButton2 control.
+        ''' </summary>
+        ''' <remarks>
+        ''' Auto-generated field.
+        ''' To modify move field declaration from designer file to code-behind file.
+        ''' </remarks>
+        Protected ASPxButton2 As Global.DevExpress.Web.ASPxEditors.ASPxButton
 
-		''' <summary>
-		''' ASPxGridView1 control.
-		''' </summary>
-		''' <remarks>
-		''' Auto-generated field.
-		''' To modify move field declaration from designer file to code-behind file.
-		''' </remarks>
-		Protected ASPxGridView1 As Global.DevExpress.Web.ASPxGridView.ASPxGridView
-	End Class
+        ''' <summary>
+        ''' ASPxGridView1 control.
+        ''' </summary>
+        ''' <remarks>
+        ''' Auto-generated field.
+        ''' To modify move field declaration from designer file to code-behind file.
+        ''' </remarks>
+        Protected ASPxGridView1 As Global.DevExpress.Web.ASPxGridView.ASPxGridView
+    End Class
 End Namespace

@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Web
@@ -7,36 +6,36 @@ Imports System.Web.Security
 Imports System.Web.SessionState
 
 Namespace WebApplication1
-	Public Class [Global]
-		Inherits System.Web.HttpApplication
+    Public Class [Global]
+        Inherits System.Web.HttpApplication
 
-		Private Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
-			' Code that runs on application startup
+        Private Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
+            ' Code that runs on application startup
 
-		End Sub
+        End Sub
 
-		Private Sub Application_End(ByVal sender As Object, ByVal e As EventArgs)
-			'  Code that runs on application shutdown
+        Private Sub Application_End(ByVal sender As Object, ByVal e As EventArgs)
+            '  Code that runs on application shutdown
 
-		End Sub
+        End Sub
 
-		Private Sub Application_Error(ByVal sender As Object, ByVal e As EventArgs)
-			' Code that runs when an unhandled error occurs
+        Private Sub Application_Error(ByVal sender As Object, ByVal e As EventArgs)
+            ' Code that runs when an unhandled error occurs
 
-		End Sub
+        End Sub
 
-		Private Sub Session_Start(ByVal sender As Object, ByVal e As EventArgs)
-			' Code that runs when a new session is started
+        Private Sub Session_Start(ByVal sender As Object, ByVal e As EventArgs)
+            ' Code that runs when a new session is started
 
-		End Sub
+        End Sub
 
-		Private Sub Session_End(ByVal sender As Object, ByVal e As EventArgs)
-			' Code that runs when a session ends. 
-			' Note: The Session_End event is raised only when the sessionstate mode
-			' is set to InProc in the Web.config file. If session mode is set to StateServer 
-			' or SQLServer, the event is not raised.
+        Private Sub Session_End(ByVal sender As Object, ByVal e As EventArgs)
+            ' Code that runs when a session ends. 
+            ' Note: The Session_End event is raised only when the sessionstate mode
+            ' is set to InProc in the Web.config file. If session mode is set to StateServer 
+            ' or SQLServer, the event is not raised.
 
-		End Sub
+        End Sub
 
-	End Class
+    End Class
 End Namespace
