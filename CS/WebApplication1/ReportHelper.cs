@@ -6,7 +6,7 @@ using DevExpress.XtraReports.UI;
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxGridView;
+using DevExpress.Web;
 using System.Drawing;
 using DevExpress.Data;
 using DevExpress.XtraPrinting;

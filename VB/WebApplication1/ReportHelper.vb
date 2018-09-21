@@ -6,7 +6,7 @@ Imports DevExpress.XtraReports.UI
 Imports System.Data
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
-Imports DevExpress.Web.ASPxGridView
+Imports DevExpress.Web
 Imports System.Drawing
 Imports DevExpress.Data
 Imports DevExpress.XtraPrinting
