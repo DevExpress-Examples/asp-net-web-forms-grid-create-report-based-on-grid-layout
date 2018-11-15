@@ -1,3 +1,12 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Default.aspx](./CS/WebApplication1/Default.aspx) (VB: [Default.aspx.vb](./VB/WebApplication1/Default.aspx.vb))
+* [Default.aspx.cs](./CS/WebApplication1/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/WebApplication1/Default.aspx.vb))
+* [Global.asax](./CS/WebApplication1/Global.asax) (VB: [Global.asax](./VB/WebApplication1/Global.asax))
+* [Global.asax.cs](./CS/WebApplication1/Global.asax.cs) (VB: [Global.asax](./VB/WebApplication1/Global.asax))
+* [ReportHelper.cs](./CS/WebApplication1/ReportHelper.cs) (VB: [ReportHelper.vb](./VB/WebApplication1/ReportHelper.vb))
+<!-- default file list end -->
 # How to convert and then print an ASPxGridView by using the XtraReport
 
 
