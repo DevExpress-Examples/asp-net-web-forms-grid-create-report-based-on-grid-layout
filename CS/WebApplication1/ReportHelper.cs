@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using DevExpress.XtraReports.UI;
 using System.Data;
@@ -32,20 +31,27 @@ namespace WebApplication1 {
         public event CustomizeColumnEventHandler CustomizeColumn;
 
 
-        public XtraReport GenerateReport(ASPxGridView aspxGridView1, SqlDataSource aspDataSource) {
+        public XtraReport GenerateReport(ASPxGridView dataGrid, object dataSource) {
             report = new XtraReport();
             report.Landscape = true;
             report.PaperKind = System.Drawing.Printing.PaperKind.Letter;
 
-            InitDataSource(aspDataSource);
-            InitDetailsAndPageHeader(aspxGridView1);
-            InitSortings(aspxGridView1);
-            InitGroupHeaders(aspxGridView1);
-            InitGroupSummaries(aspxGridView1);
-            InitFilters(aspxGridView1);
-            InitTotalSummaries(aspxGridView1);
+            IDataSource webDataSource = dataSource as IDataSource;
+            IList listDataSource = dataSource as IList;
+            if(webDataSource != null)
+                InitDataSource(webDataSource, dataGrid.DataMember);
+            else if(listDataSource != null)
+                InitDataSource(listDataSource);
+            else throw new ArgumentException("dataSource");
+            InitDetailsAndPageHeader(dataGrid);
+            InitSortings(dataGrid);
+            InitGroupHeaders(dataGrid);
+            InitGroupSummaries(dataGrid);
+            InitFilters(dataGrid);
+            InitTotalSummaries(dataGrid);
             return report;
         }
+
         void InitGroupSummaries(ASPxGridView aspxGridView1) {
             if(aspxGridView1.GroupSummary.Count > 0) {
                 ReadOnlyCollection<GridViewDataColumn> groupedColumns = aspxGridView1.GetGroupedColumns();
@@ -94,13 +100,15 @@ namespace WebApplication1 {
             }
         }
 
-        void InitDataSource(SqlDataSource aspDataSource) {
-            DataView dv = new DataView();
-            DataTable dt = new DataTable();
-            dv = aspDataSource.Select(DataSourceSelectArguments.Empty) as DataView;
-            dt = dv.ToTable();
-            report.DataSource = dt;
+        void InitDataSource(IDataSource dataSource, string dataMember) {
+            DataSourceView view = dataSource.GetView(dataMember);
+            view.Select(DataSourceSelectArguments.Empty, data => report.DataSource = data);
         }
+
+        void InitDataSource(IList dataSource) {
+            report.DataSource = dataSource;
+        }
+
         void InitGroupHeaders(ASPxGridView aspxGridView1) {
             ReadOnlyCollection<GridViewDataColumn> groupedColumns = aspxGridView1.GetGroupedColumns();
             for(int i = groupedColumns.Count - 1; i >= 0; i--) {
@@ -139,7 +147,8 @@ namespace WebApplication1 {
 
             int pagewidth = (report.PageWidth - (report.Margins.Left + report.Margins.Right)) - groupedColumns.Count * subGroupOffset;
             List<ColumnInfo> columns = GetColumnsInfo(aspxGridView1, pagewidth);
-            CustomizeColumnsCollection(report, new ColumnsCreationEventArgs(pagewidth) { ColumnsInfo = columns });
+            if (CustomizeColumnsCollection != null)
+                CustomizeColumnsCollection(report, new ColumnsCreationEventArgs(pagewidth) { ColumnsInfo = columns });
 
             report.Bands.Add(new DetailBand() { HeightF = bandHeight });
             report.Bands.Add(new PageHeaderBand() { HeightF = bandHeight });
@@ -158,10 +167,12 @@ namespace WebApplication1 {
 
                     XRTableCell cell2 = new XRTableCell();
                     cell2.Width = columns[i].ColumnWidth;
-                    ControlCustomizationEventArgs cc = new ControlCustomizationEventArgs() { FieldName = columns[i].FieldName, IsModified = false, Owner = cell2 };
-                    CustomizeColumn(report, cc);
-                    if(cc.IsModified == false)
-                        cell2.DataBindings.Add("Text", null, columns[i].FieldName);
+                    if (CustomizeColumn != null) {
+                        ControlCustomizationEventArgs cc = new ControlCustomizationEventArgs() { FieldName = columns[i].FieldName, IsModified = false, Owner = cell2 };
+                        CustomizeColumn(report, cc);
+                        if(cc.IsModified == false)
+                            cell2.DataBindings.Add("Text", null, columns[i].FieldName);
+                    }
                     detailsInfo.Add(columns[i].GridViewColumn, cell2);
                     row2.Cells.Add(cell2);
                 }

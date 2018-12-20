@@ -32,18 +32,26 @@ Namespace WebApplication1
         Public Event CustomizeColumn As CustomizeColumnEventHandler
 
 
-        Public Function GenerateReport(ByVal aspxGridView1 As ASPxGridView, ByVal aspDataSource As SqlDataSource) As XtraReport
+        Public Function GenerateReport(ByVal dataGrid As ASPxGridView, ByVal dataSource As Object) As XtraReport
             report = New XtraReport()
             report.Landscape = True
             report.PaperKind = System.Drawing.Printing.PaperKind.Letter
 
-            InitDataSource(aspDataSource)
-            InitDetailsAndPageHeader(aspxGridView1)
-            InitSortings(aspxGridView1)
-            InitGroupHeaders(aspxGridView1)
-            InitGroupSummaries(aspxGridView1)
-            InitFilters(aspxGridView1)
-            InitTotalSummaries(aspxGridView1)
+            Dim webDataSource As IDataSource = TryCast(dataSource, IDataSource)
+            Dim listDataSource As IList = TryCast(dataSource, IList)
+            If webDataSource IsNot Nothing Then
+                InitDataSource(webDataSource, dataGrid.DataMember)
+            ElseIf listDataSource IsNot Nothing Then
+                InitDataSource(listDataSource)
+            Else
+                Throw New ArgumentException("dataSource")
+            End If
+            InitDetailsAndPageHeader(dataGrid)
+            InitSortings(dataGrid)
+            InitGroupHeaders(dataGrid)
+            InitGroupSummaries(dataGrid)
+            InitFilters(dataGrid)
+            InitTotalSummaries(dataGrid)
             Return report
         End Function
         Private Sub InitGroupSummaries(ByVal aspxGridView1 As ASPxGridView)
@@ -94,12 +102,13 @@ Namespace WebApplication1
             End If
         End Sub
 
-        Private Sub InitDataSource(ByVal aspDataSource As SqlDataSource)
-            Dim dv As New DataView()
-            Dim dt As New DataTable()
-            dv = TryCast(aspDataSource.Select(DataSourceSelectArguments.Empty), DataView)
-            dt = dv.ToTable()
-            report.DataSource = dt
+        Private Sub InitDataSource(ByVal dataSource As IDataSource, ByVal dataMember As String)
+            Dim view As DataSourceView = dataSource.GetView(dataMember)
+            view.Select(DataSourceSelectArguments.Empty, Sub(data) report.DataSource = data)
+        End Sub
+
+        Private Sub InitDataSource(ByVal dataSource As IList)
+            report.DataSource = dataSource
         End Sub
         Private Sub InitGroupHeaders(ByVal aspxGridView1 As ASPxGridView)
             Dim groupedColumns As ReadOnlyCollection(Of GridViewDataColumn) = aspxGridView1.GetGroupedColumns()
