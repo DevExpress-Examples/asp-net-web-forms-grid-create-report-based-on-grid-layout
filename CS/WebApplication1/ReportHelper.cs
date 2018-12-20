@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using DevExpress.XtraReports.UI;
 using System.Data;
@@ -139,7 +138,8 @@ namespace WebApplication1 {
 
             int pagewidth = (report.PageWidth - (report.Margins.Left + report.Margins.Right)) - groupedColumns.Count * subGroupOffset;
             List<ColumnInfo> columns = GetColumnsInfo(aspxGridView1, pagewidth);
-            CustomizeColumnsCollection(report, new ColumnsCreationEventArgs(pagewidth) { ColumnsInfo = columns });
+            if (CustomizeColumnsCollection != null)
+                CustomizeColumnsCollection(report, new ColumnsCreationEventArgs(pagewidth) { ColumnsInfo = columns });
 
             report.Bands.Add(new DetailBand() { HeightF = bandHeight });
             report.Bands.Add(new PageHeaderBand() { HeightF = bandHeight });
@@ -158,10 +158,12 @@ namespace WebApplication1 {
 
                     XRTableCell cell2 = new XRTableCell();
                     cell2.Width = columns[i].ColumnWidth;
-                    ControlCustomizationEventArgs cc = new ControlCustomizationEventArgs() { FieldName = columns[i].FieldName, IsModified = false, Owner = cell2 };
-                    CustomizeColumn(report, cc);
-                    if(cc.IsModified == false)
-                        cell2.DataBindings.Add("Text", null, columns[i].FieldName);
+                    if (CustomizeColumn != null) {
+                        ControlCustomizationEventArgs cc = new ControlCustomizationEventArgs() { FieldName = columns[i].FieldName, IsModified = false, Owner = cell2 };
+                        CustomizeColumn(report, cc);
+                        if(cc.IsModified == false)
+                            cell2.DataBindings.Add("Text", null, columns[i].FieldName);
+                    }
                     detailsInfo.Add(columns[i].GridViewColumn, cell2);
                     row2.Cells.Add(cell2);
                 }
