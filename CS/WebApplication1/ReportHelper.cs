@@ -31,20 +31,27 @@ namespace WebApplication1 {
         public event CustomizeColumnEventHandler CustomizeColumn;
 
 
-        public XtraReport GenerateReport(ASPxGridView aspxGridView1, SqlDataSource aspDataSource) {
+        public XtraReport GenerateReport(ASPxGridView dataGrid, object dataSource) {
             report = new XtraReport();
             report.Landscape = true;
             report.PaperKind = System.Drawing.Printing.PaperKind.Letter;
 
-            InitDataSource(aspDataSource);
-            InitDetailsAndPageHeader(aspxGridView1);
-            InitSortings(aspxGridView1);
-            InitGroupHeaders(aspxGridView1);
-            InitGroupSummaries(aspxGridView1);
-            InitFilters(aspxGridView1);
-            InitTotalSummaries(aspxGridView1);
+            IDataSource webDataSource = dataSource as IDataSource;
+            IList listDataSource = dataSource as IList;
+            if(webDataSource != null)
+                InitDataSource(webDataSource, dataGrid.DataMember);
+            else if(listDataSource != null)
+                InitDataSource(listDataSource);
+            else throw new ArgumentException("dataSource");
+            InitDetailsAndPageHeader(dataGrid);
+            InitSortings(dataGrid);
+            InitGroupHeaders(dataGrid);
+            InitGroupSummaries(dataGrid);
+            InitFilters(dataGrid);
+            InitTotalSummaries(dataGrid);
             return report;
         }
+
         void InitGroupSummaries(ASPxGridView aspxGridView1) {
             if(aspxGridView1.GroupSummary.Count > 0) {
                 ReadOnlyCollection<GridViewDataColumn> groupedColumns = aspxGridView1.GetGroupedColumns();
@@ -93,13 +100,15 @@ namespace WebApplication1 {
             }
         }
 
-        void InitDataSource(SqlDataSource aspDataSource) {
-            DataView dv = new DataView();
-            DataTable dt = new DataTable();
-            dv = aspDataSource.Select(DataSourceSelectArguments.Empty) as DataView;
-            dt = dv.ToTable();
-            report.DataSource = dt;
+        void InitDataSource(IDataSource dataSource, string dataMember) {
+            DataSourceView view = dataSource.GetView(dataMember);
+            view.Select(DataSourceSelectArguments.Empty, data => report.DataSource = data);
         }
+
+        void InitDataSource(IList dataSource) {
+            report.DataSource = dataSource;
+        }
+
         void InitGroupHeaders(ASPxGridView aspxGridView1) {
             ReadOnlyCollection<GridViewDataColumn> groupedColumns = aspxGridView1.GetGroupedColumns();
             for(int i = groupedColumns.Count - 1; i >= 0; i--) {
