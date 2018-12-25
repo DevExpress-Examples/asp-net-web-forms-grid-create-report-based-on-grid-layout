@@ -167,12 +167,12 @@ namespace WebApplication1 {
 
                     XRTableCell cell2 = new XRTableCell();
                     cell2.Width = columns[i].ColumnWidth;
+                    ControlCustomizationEventArgs cc = new ControlCustomizationEventArgs() { FieldName = columns[i].FieldName, IsModified = false, Owner = cell2 };
                     if (CustomizeColumn != null) {
-                        ControlCustomizationEventArgs cc = new ControlCustomizationEventArgs() { FieldName = columns[i].FieldName, IsModified = false, Owner = cell2 };
                         CustomizeColumn(report, cc);
-                        if(cc.IsModified == false)
-                            cell2.DataBindings.Add("Text", null, columns[i].FieldName);
                     }
+                    if (cc.IsModified == false)
+                        cell2.DataBindings.Add("Text", null, columns[i].FieldName);
                     detailsInfo.Add(columns[i].GridViewColumn, cell2);
                     row2.Cells.Add(cell2);
                 }
