@@ -3,15 +3,31 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/E4476)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# How to convert and then print an ASPxGridView by using the XtraReport
+# Grid View for ASP.NET Web Forms - How to create a report based on grid data
 <!-- run online -->
 **[[Run Online]](https://codecentral.devexpress.com/e4476/)**
 <!-- run online end -->
+This example demonstrates how to dynamically create a [DevExpress report](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.UI.XtraReport) based on the [ASPxGridView](https://docs.devexpress.com/AspNet/5823/components/grid-view) control's data and layout. The resulting report maintains all sorting, grouping, and filtering settings applied to the grid. The example code exports this report to a PDF file, but you can also insert the resulting report to another report.
 
+![Create a Report Based on Grid View Data](image.png)
 
-<p>This example demonstrates how to dynamically create a report based upon the ASPxGridView control at runtime.  This means that all filtering, sorting and grouping conditions selected in the grid are also applied in a report. To accomplish this task, it is necessary to create a report with all the necessary bands, bind it to a data source and adjust all the necessary options.You can use this approach if you need to display content of templated columns in your report or insert a report based on ASPxGridView to another report.</p><p><strong>See also:<br />
-</strong><a href="https://www.devexpress.com/Support/Center/p/E4755">E4755: How to convert and then print an GridView extension by using the XtraReport</a></p>
+Follow the steps below to create a report based on the Grid View control's data:
 
-<br/>
+1. Create an instance of the [XtraReport](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.UI.XtraReport) class.
+2. Bind the instance to the Grid View's data source.
+3. Based on the Grid layout, create [bands](https://docs.devexpress.com/XtraReports/2587/detailed-guide-to-devexpress-reporting/introduction-to-banded-reports) and add them to the report.
+4. Create [report controls](https://docs.devexpress.com/XtraReports/2605/detailed-guide-to-devexpress-reporting/use-report-controls) and add them to the bands.
 
+## Files to Review
 
+* [Default.aspx](./CS/WebApplication1/Default.aspx) (VB: [Default.aspx](./VB/WebApplication1/Default.aspx))
+* [Default.aspx.cs](./CS/WebApplication1/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/WebApplication1/Default.aspx.vb))
+* [ReportHelper.cs](./CS/WebApplication1/ReportHelper.cs) (VB: [ReportHelper.vb](./VB/WebApplication1/ReportHelper.vb))
+
+## Documentation
+
+* [Create a Report in Code](https://docs.devexpress.com/XtraReports/115726/detailed-guide-to-devexpress-reporting/reporting-api/create-reports-in-code)
+
+## More examples
+
+* [Grid View for ASP.NET MVC - How to create a report based on grid data](https://github.com/DevExpress-Examples/how-to-convert-and-then-print-an-gridview-extension-by-using-the-xtrareport-e4755)
