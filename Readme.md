@@ -5,7 +5,7 @@
 <!-- default badges end -->
 # Grid View for ASP.NET Web Forms - How to create a report based on grid data
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e4476/)**
+**[[Run Online]](https://codecentral.devexpress.com/128538561/)**
 <!-- run online end -->
 This example demonstrates how to dynamically create a [DevExpress report](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.UI.XtraReport) based on the [ASPxGridView](https://docs.devexpress.com/AspNet/5823/components/grid-view) control's data and layout. The resulting report maintains all sorting, grouping, and filtering settings applied to the grid. The example code exports this report to a PDF file, but you can also insert the resulting report into another report.
 
