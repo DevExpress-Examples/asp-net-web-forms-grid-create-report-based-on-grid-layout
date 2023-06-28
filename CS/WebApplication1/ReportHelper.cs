@@ -145,7 +145,7 @@ namespace WebApplication1 {
  void InitDetailsAndPageHeader(ASPxGridView aspxGridView1) {
             ReadOnlyCollection<GridViewDataColumn> groupedColumns = aspxGridView1.GetGroupedColumns();
 
-            int pagewidth = (report.PageWidth - (report.Margins.Left + report.Margins.Right)) - groupedColumns.Count * subGroupOffset;
+            int pagewidth = (report.PageWidth - (int)(report.Margins.Left + report.Margins.Right)) - groupedColumns.Count * subGroupOffset;
             List<ColumnInfo> columns = GetColumnsInfo(aspxGridView1, pagewidth);
             if (CustomizeColumnsCollection != null)
                 CustomizeColumnsCollection(report, new ColumnsCreationEventArgs(pagewidth) { ColumnsInfo = columns });

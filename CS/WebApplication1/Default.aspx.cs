@@ -32,12 +32,12 @@ namespace WebApplication1 {
                 control.LocationF = new System.Drawing.PointF(0, 0);
                 e.Owner.Controls.Add(control);
                 control.Shape = new ShapeStar() { StarPointCount = 5, Concavity = 30 };
-                control.BeforePrint += new System.Drawing.Printing.PrintEventHandler(control_BeforePrint);
+                control.BeforePrint += new BeforePrintEventHandler(control_BeforePrint);
                 e.IsModified = true;
             }
         }
 
-        void control_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {
+        void control_BeforePrint(object sender, System.ComponentModel.CancelEventArgs e) {
             if(Convert.ToBoolean(((XRShape)sender).Report.GetCurrentColumnValue("Discontinued")) == true)
                 ((XRShape)sender).FillColor = Color.Yellow;
             else
