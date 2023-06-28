@@ -34,7 +34,7 @@ namespace WebApplication1 {
         public XtraReport GenerateReport(ASPxGridView dataGrid, object dataSource) {
             report = new XtraReport();
             report.Landscape = true;
-            report.PaperKind = System.Drawing.Printing.PaperKind.Letter;
+            report.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Letter;
 
             IDataSource webDataSource = dataSource as IDataSource;
             IList listDataSource = dataSource as IList;
