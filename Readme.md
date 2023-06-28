@@ -5,7 +5,7 @@
 <!-- default badges end -->
 # How to convert and then print an ASPxGridView by using the XtraReport
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e4476/)**
+**[[Run Online]](https://codecentral.devexpress.com/128538561/)**
 <!-- run online end -->
 
 
