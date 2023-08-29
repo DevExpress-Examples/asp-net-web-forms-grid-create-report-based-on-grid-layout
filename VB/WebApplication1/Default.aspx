@@ -1,7 +1,7 @@
 <%@ Page Title="Home Page" Language="VB" AutoEventWireup="true"
     CodeBehind="Default.aspx.vb" Inherits="WebApplication1._Default" %>
 
-<%@ Register Assembly="DevExpress.Web.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.Web.v23.1, Version=23.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 
