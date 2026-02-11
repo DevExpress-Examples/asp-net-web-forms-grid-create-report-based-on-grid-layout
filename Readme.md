@@ -30,7 +30,7 @@ Follow the steps below to create a report based on the Grid View control's data:
 
 * [Grid View for ASP.NET MVC - How to create a report based on grid data](https://github.com/DevExpress-Examples/how-to-convert-and-then-print-an-gridview-extension-by-using-the-xtrareport-e4755)
 <!-- feedback -->
-## Does This Example Address Your Development Requirements/Objectives?
+## Does this example address your development requirements/objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=asp-net-web-forms-grid-create-report-based-on-grid-layout&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=asp-net-web-forms-grid-create-report-based-on-grid-layout&~~~was_helpful=no)
 
